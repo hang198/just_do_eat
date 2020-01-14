@@ -12,9 +12,6 @@ class ProductDB
         $this->conn = $db->connect();
     }
 
-<<<<<<< HEAD
-
-=======
     public function getAll()
     {
         $sql = "SELECT * FROM products";
@@ -28,5 +25,4 @@ class ProductDB
         }
         return $arr;
     }
->>>>>>> c7760dab26e0d9187945e76ea6cf6351a152a3d5
 }
