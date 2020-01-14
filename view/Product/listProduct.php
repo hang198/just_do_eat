@@ -12,10 +12,9 @@
     </div>
     <div class="container">
         <div class="row">
+            <?php foreach ($products as $product) :?>
             <div class="col-md-6 col-lg-3 ftco-animate">
-
-                <?php foreach ($products as $product) :?>
-                <div class="product">
+                <div class="product" >
                     <a href="index.php?page=product&id=<?php echo $product->getProductId()?>" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
                                                                    alt="Colorlib Template">
                         <span class="status">30%</span>
@@ -44,11 +43,10 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach;?>
-
                 </div>
-            </div>
 
+            </div>
+            <?php endforeach;?>
         </div>
     </div>
 </section>
