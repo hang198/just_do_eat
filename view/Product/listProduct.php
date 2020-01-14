@@ -24,7 +24,7 @@
                         <h3><a href="#"><?php echo $product->getName(); ?></a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span class="price-sale">$80.00</span>
+                                <p class="price"><span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span class="price-sale"><?php echo floor($product->getPrice()-$product->getPrice()*30/100) ?></span>
                                 </p>
                             </div>
                         </div>
