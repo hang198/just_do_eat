@@ -29,8 +29,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
     <link rel="stylesheet" href="css/magnific-popup.css">
 
     <link rel="stylesheet" href="css/aos.css">
+    <link href="css/css/product.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/ionicons.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="css.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
@@ -44,11 +49,12 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 <?php include_once "view/core/header.php" ?>
 <?php include_once "view/core/navbar.php" ?>
-<?php include_once "view/core/banner.php" ?>
-<?php include_once "view/core/especial.php" ?>
+
 <?php
 switch ($page){
-
+    case 'product':
+        $productController->getValueProduct();
+        break;
     default:
         $productController->index();
 }
@@ -85,5 +91,7 @@ switch ($page){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
 </html>

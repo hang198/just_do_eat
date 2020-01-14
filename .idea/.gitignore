@@ -1,2 +1,6 @@
 # Default ignored files
 /workspace.xml
+<<<<<<< HEAD
+/model/database/DBConnect.php
+=======
+>>>>>>> c7760dab26e0d9187945e76ea6cf6351a152a3d5
