@@ -1,3 +1,5 @@
+<?php include_once "view/core/banner.php" ?>
+<?php include_once "view/core/especial.php" ?>
 <section>
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -14,7 +16,7 @@
 
                 <?php foreach ($products as $product) :?>
                 <div class="product">
-                    <a href="index.php?page=" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
+                    <a href="index.php?page=product&id=<?php echo $product->getProductId()?>" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
                                                                    alt="Colorlib Template">
                         <span class="status">30%</span>
                         <div class="overlay"></div>
