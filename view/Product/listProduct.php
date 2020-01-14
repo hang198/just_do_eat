@@ -1,3 +1,5 @@
+<?php include_once "view/core/banner.php" ?>
+<?php include_once "view/core/especial.php" ?>
 <section>
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -10,11 +12,10 @@
     </div>
     <div class="container">
         <div class="row">
+            <?php foreach ($products as $product) :?>
             <div class="col-md-6 col-lg-3 ftco-animate">
-
-                <?php foreach ($products as $product) :?>
-                <div class="product">
-                    <a href="index.php?page=" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
+                <div class="product" >
+                    <a href="index.php?page=product&id=<?php echo $product->getProductId()?>" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
                                                                    alt="Colorlib Template">
                         <span class="status">30%</span>
                         <div class="overlay"></div>
@@ -23,7 +24,7 @@
                         <h3><a href="#"><?php echo $product->getName(); ?></a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span class="price-sale">$80.00</span>
+                                <p class="price"><span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span class="price-sale"><?php echo floor($product->getPrice()-$product->getPrice()*30/100) ?></span>
                                 </p>
                             </div>
                         </div>
@@ -42,11 +43,10 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach;?>
-
                 </div>
-            </div>
 
+            </div>
+            <?php endforeach;?>
         </div>
     </div>
 </section>
