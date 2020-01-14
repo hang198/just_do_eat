@@ -11,4 +11,6 @@ class ProductDB
         $db = new DBConnect();
         $this->conn = $db->connect();
     }
+
+
 }
