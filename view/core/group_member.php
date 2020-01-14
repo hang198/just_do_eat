@@ -14,7 +14,7 @@
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">Đến từ Hải Phòng, nên là không thích nói chuyện lòng vòng</p>
                                 <p class="name">Vũ Thế Công</p>
-                                <span class="position">Nhặt rau thuê </span>
+                                <span class="position">Nhặt rau thuê</span>
                             </div>
                         </div>
                     </div>

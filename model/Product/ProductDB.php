@@ -35,4 +35,5 @@ class ProductDB
         return new Product($result[0]['name'],$result[0]['price'],$result[0]['quantity'],$result[0]['description'],$result[0]['img'],$result[0]['category']);
 
     }
+
 }
