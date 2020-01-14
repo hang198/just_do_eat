@@ -28,7 +28,7 @@
     </script>
 </head>
 <body>
-<div class="container">
+<div class="container" style="background: transparent">
     <div class="row">
         <div class="span12">
             <div class="" id="loginModal">
