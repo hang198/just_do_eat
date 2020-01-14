@@ -28,7 +28,7 @@
                         <span class="review-no">41 reviews</span>
                     </div>
                     <p class="product-description"><?php echo $product->getDescription() ?></p>
-                    <h4 class="price">current price: <span><?php echo $product->getPrice() ?></span></h4>
+                    <h4 class="price">current price:<span style="margin-left: 10px"><?php echo $product->getPrice() ?></span></h4>
                     <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                     <h5 class="colors">colors:
                         <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
