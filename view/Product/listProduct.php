@@ -14,16 +14,16 @@
 
                 <?php foreach ($products as $product) :?>
                 <div class="product">
-                    <a href="index.php?page=" class="img-prod"><img class="img-fluid" src="images/product-1.jpg"
-                                                                   alt="Colorlib Template">
-                        <span class="status">30%</span>
+                    <a href="index.php?page=" class="img-prod">
+                        <img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+<!--                        <span class="status">30%</span>-->
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
                         <h3><a href="#"><?php echo $product->getName(); ?></a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span class="price-sale">$80.00</span>
+                                <p class="price"><span class="price-sale">$ <?php echo $product->getPrice(); ?></span>
                                 </p>
                             </div>
                         </div>

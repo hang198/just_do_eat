@@ -10,7 +10,13 @@ class ProductController
 
     public function index()
     {
-        $products=$this->productDB->getAll();
+        $products=$this->productDB->getListProduct();
         include_once "view/Product/listProduct.php";
+    }
+
+    public function createProduct()
+    {
+        $product = new Product('chân gà rang muối', 20000, 10, "chân gà ngon", "", "1");
+        $this->productDB->createProduct($product);
     }
 }
