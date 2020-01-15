@@ -10,14 +10,16 @@ class User
     private $email;
     private $address;
     private $phone;
+    private $avatar;
 
-    public function __construct($_username, $_password, $_email, $_address, $_phone)
+    public function __construct($_username, $_password, $_email, $_address, $_phone, $_avatar)
     {
         $this->username = $_username;
         $this->password = $_password;
         $this->email = $_email;
         $this->address = $_address;
         $this->phone = $_phone;
+        $this->avatar = $_avatar;
     }
 
     /**
@@ -69,6 +71,14 @@ class User
     }
 
     /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
      * @param mixed $user_id
      */
     public function setUserId($user_id)
@@ -114,5 +124,13 @@ class User
     public function setPhone($phone)
     {
         $this->phone = $phone;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
     }
 }

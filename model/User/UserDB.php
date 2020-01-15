@@ -18,14 +18,15 @@ class UserDB
 
     public function createUser($user)
     {
-        $sql = "INSERT INTO users(username, password, email, address, phone) 
-                VALUE (:username, :password, :email, :address, :phone)";
+        $sql = "INSERT INTO users(username, password, email, address, phone, avatar) 
+                VALUE (:username, :password, :email, :address, :phone, :avatar)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':username', $user->getUsername());
-        $stmt->bindParam(':password', $user->getUser());
+        $stmt->bindParam(':password', $user->getPassword());
         $stmt->bindParam(':email', $user->getEmail());
         $stmt->bindParam(':address', $user->getAddress());
         $stmt->bindParam(':phone', $user->getPhone());
+        $stmt->bindParam(':avatar', $user->getAvatar());
         $stmt->execute();
     }
 
@@ -39,6 +40,7 @@ class UserDB
 
     public function editUser($user_id, $user)
     {
+
         $sql = "UPDATE users 
                 SET username = :username, password = :password, 
                     email = :email, address = :address, phone = :phone 
@@ -70,7 +72,7 @@ class UserDB
     {
         $arr = [];
         foreach ($result as $item) {
-            $user = new User($item['username'], $item['password'], $item['email'], $item['address'], $item['phone']);
+            $user = new User($item['username'], $item['password'], $item['email'], $item['address'], $item['phone'], $item['avatar']);
             $user->setUserId($item['user_id']);
             array_push($arr, $user);
         }
