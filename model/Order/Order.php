@@ -13,13 +13,12 @@ class Order
     private $status;
     private $createDate;
 
-    public function __construct($product, $quantity, $customer, $status, $createDate)
+    public function __construct($product, $quantity, $customer, $status)
     {
         $this->product = $product;
         $this->quantity = $quantity;
         $this->customer = $customer;
         $this->status = $status;
-        $this->createDate = $createDate;
     }
 
     /**
