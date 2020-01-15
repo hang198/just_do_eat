@@ -69,11 +69,13 @@ switch ($page) {
     case 'add':
         $productController->createProduct();
         break;
+    case 'edit':
+        $productController->editProduct();
+        break;
     default:
-        $productController->index();
+            $productController->index();
+
 }
-
-
 ?>
 
 <?php include_once "view/core/group_member.php" ?>

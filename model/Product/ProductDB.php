@@ -45,6 +45,8 @@ class ProductDB
 
     public function editProduct($product_id, $product)
     {
+
+
         $name = $product->getName();
         $price = $product->getPrice();
         $quantity = $product->getQuantity();
@@ -53,20 +55,12 @@ class ProductDB
         $category = $product->getCategory();
 
         $sql = "UPDATE products 
-                SET name = :product_name, price = :price, quantity = :quantity, 
-                    description = :description, img = :img, category = :category
-                WHERE product_id = :product_id";
+                SET product_name = '$name', price = '$price', quantity = '$quantity', 
+                    description = '$description', img = '$img', category = '$category'
+                WHERE product_id = $product_id";
         $stmt = $this->conn->prepare($sql);
-
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':quantity', $quantity);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':img', $img);
-        $stmt->bindParam(':category', $category);
-
-        $stmt->bindParam(':product_id', $product_id);
         $stmt->execute();
+
     }
 
     public function deleteProduct($product_id)
@@ -98,8 +92,6 @@ class ProductDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         return new Product($result[0]['product_name'], $result[0]['price'], $result[0]['quantity'], $result[0]['description'], $result[0]['img'], $result[0]['category']);
-
-
     }
 
     public function upload()
