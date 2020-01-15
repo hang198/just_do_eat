@@ -11,6 +11,15 @@
         </div>
     </div>
     <div class="container">
+    <form method="POST">
+        <div class="text-right form-group">
+            <select class="btn btn-success" name="sortBy">
+                <option value="ASC" <?php if ($sortBy == 'ASC'): ?>selected<?php endif; ?>>Tăng dần</option>
+                <option value="DESC" <?php if ($sortBy == 'DESC'): ?>selected<?php endif; ?>>Giảm dần</option>
+            </select>
+            <button type="submit" class="btn btn-light">Submit</button>
+        </div>
+    </form>
         <div class="row">
             <a href="index.php?page=add">Add</a>
             <?php foreach ($products as $product) : ?>
@@ -32,21 +41,22 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="bottom-area d-flex px-3">
-                                <div class="m-auto d-flex">
-                                    <a href="#"
-                                       class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                        <span><i class="ion-ios-menu"></i></span>
-                                    </a>
-                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                        <span><i class="ion-ios-cart"></i></span>
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="bottom-area d-flex px-3">
+                            <div class="m-auto d-flex">
+                                <a href="#"
+                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <span><i class="ion-ios-menu"></i></span>
+                                </a>
+                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                    <span><i class="ion-ios-cart"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+            </div>
             <?php endforeach; ?>
         </div>
     </div>

@@ -12,9 +12,9 @@ class ProductDB
         $this->conn = $db->connect();
     }
 
-    public function getListProduct()
+    public function getListProduct($start, $limit)
     {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM products LIMIT $start, $limit";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         return $this->createProductFromData($result);
@@ -53,16 +53,18 @@ class ProductDB
         $category=$product->getCategory();
 
         $sql = "UPDATE products 
-                SET name = :name, price = :price, quantity = :quantity, 
+                SET name = :product_name, price = :price, quantity = :quantity, 
                     description = :description, img = :img, category = :category
                 WHERE product_id = :product_id";
         $stmt = $this->conn->prepare($sql);
+
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':quantity',$quantity );
         $stmt->bindParam(':description',$description );
         $stmt->bindParam(':img',$img );
         $stmt->bindParam(':category', $category);
+
         $stmt->bindParam(':product_id', $product_id);
         $stmt->execute();
     }
@@ -103,12 +105,50 @@ class ProductDB
     {
         $file_name = $_FILES['img']['name'];
         $file_tmp = $_FILES['img']['tmp_name'];
-        $file_type=$_FILES['img']['type'];
-        $file_ext = strtolower(end(explode('/',$file_type )));
+        $file_type = $_FILES['img']['type'];
+        $file_ext = strtolower(end(explode('/', $file_type)));
         $ext = ["jpg", "png", "jpeg"];
         if (in_array($file_ext, $ext)) {
             move_uploaded_file($file_tmp, "images/" . date("H:i:s") . $file_name);
         }
+    }
+    public function searchProduct($keyword)
+    {
+        $sql = "SELECT * FROM products p
+        INNER JOIN categories c
+        ON p.category = c.category_id
+        WHERE p.product_name LIKE '%$keyword%' OR c.category_name LIKE '%$keyword%'";
+        $stmt = $this->conn->query($sql);
+        $result = $stmt->fetchAll();
+        $arr = [];
+        foreach ($result as $item) {
+            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+            array_push($arr, $product);
+            $product->setProductId($item['id']);
+        }
+        return $arr;
+    }
+
+    public function sortBy($sortBy)
+    {
+        $sql = "SELECT * FROM products ORDER BY price $sortBy"; 
+        $stmt = $this->conn->query($sql);
+        $result = $stmt->fetchAll();
+        $arr = [];
+        foreach ($result as $item) {
+            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+            array_push($arr, $product);
+            $product->setProductId($item['id']);
+        }
+        return $arr;  
+    }
+
+    public function totalRecordsPage()
+    {
+        $sql = "SELECT COUNT(product_id) as total FROM `products`";
+        $stmt = $this->conn->query($sql);
+        $totals = $stmt->fetchAll();
+        return $totals;
     }
 
 }
