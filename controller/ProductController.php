@@ -17,8 +17,19 @@ class ProductController
 
     public function createProduct()
     {
-        $product = new Product('chân gà rang muối', 20000, 10, "chân gà ngon", "", "1");
-        $this->productDB->createProduct($product);
+        include_once "view/product/add.php";
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+            $this->productDB->upload();
+            $name=$_POST['name'];
+            $price=$_POST['price'];
+            $quantity=$_POST['quantity'];
+            $description=$_POST['description'];
+            $img= date('H:i:s').$_FILES['img']['name'];
+            $category=$_POST['category'];
+            $product = new Product($name,$price,$quantity,$description,$img,$category);
+            $this->productDB->createProduct($product);
+        }
+
     }
 
     public function getValueProduct()

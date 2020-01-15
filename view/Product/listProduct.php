@@ -12,11 +12,12 @@
     </div>
     <div class="container">
         <div class="row">
+            <a href="index.php?page=add">Add</a>
             <?php foreach ($products as $product) : ?>
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product">
-                        <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>" class="img-prod"><img
-                                    class="img-fluid" src="images/product-1.jpg"
+                        <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>" class="img-prod">
+                            <img class="img-fluid" src="images/<?php echo $product->getImg() ?>"
                                     alt="Colorlib Template">
                             <span class="status">0%</span>
                             <div class="overlay"></div>
