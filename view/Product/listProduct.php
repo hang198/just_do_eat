@@ -13,11 +13,10 @@
     <div class="container">
     <form method="POST">
         <div class="text-right form-group">
-            <select class="btn btn-success" name="sortBy">
+            <select class="btn btn-success" name="sortBy" onchange="this.form.submit()">
                 <option value="ASC" <?php if ($sortBy == 'ASC'): ?>selected<?php endif; ?>>Tăng dần</option>
                 <option value="DESC" <?php if ($sortBy == 'DESC'): ?>selected<?php endif; ?>>Giảm dần</option>
             </select>
-            <button type="submit" class="btn btn-light">Submit</button>
         </div>
     </form>
         <div class="row">
