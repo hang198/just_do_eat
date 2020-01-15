@@ -85,8 +85,8 @@ class ProductDB
         $arr = [];
         foreach ($result as $item) {
             $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
-            array_push($arr, $product);
             $product->setProductId($item['product_id']);
+            array_push($arr, $product);
         }
         return $arr;
     }
@@ -123,8 +123,9 @@ class ProductDB
         $arr = [];
         foreach ($result as $item) {
             $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+
+            $product->setProductId($item['product_id']);
             array_push($arr, $product);
-            $product->setProductId($item['id']);
         }
         return $arr;
     }
@@ -137,8 +138,8 @@ class ProductDB
         $arr = [];
         foreach ($result as $item) {
             $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+            $product->setProductId($item['product_id']);
             array_push($arr, $product);
-            $product->setProductId($item['id']);
         }
         return $arr;  
     }
