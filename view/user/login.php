@@ -57,13 +57,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
     <link rel="stylesheet" href="../../css/flaticon.css">
     <link rel="stylesheet" href="../../css/icomoon.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/css.css">
 
 </head>
 <body class="goto-here">
-
-<?php include_once "view/core/header.php" ?>
-<?php include_once "view/core/navbar.php" ?>
-
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 switch ($page){

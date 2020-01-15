@@ -10,23 +10,23 @@
                 </div>
             </div>
         </div>
+        </div>
         <div class="container">
             <form method="POST">
                 <div class="text-right form-group">
-                    <select class="btn btn-success" name="sortBy">
+                    <select class="btn btn-success" name="sortBy" onchange="this.form.submit()">
                         <option value="ASC" <?php if ($sortBy == 'ASC'): ?>selected<?php endif; ?>>Tăng dần</option>
                         <option value="DESC" <?php if ($sortBy == 'DESC'): ?>selected<?php endif; ?>>Giảm dần</option>
                     </select>
-                    <button type="submit" class="btn btn-light">Submit</button>
                 </div>
             </form>
             <div class="row">
+
                 <?php foreach ($products as $product) : ?>
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
-                            <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>" class="img-prod"><img
-                                        class="img-fluid" src="images/product-1.jpg"
-                                        alt="Colorlib Template">
+                            <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>" class="img-prod">
+                                <img class="img-fluid" src="images/<?php echo $product->getImg() ?>" alt="Colorlib Template" style="width:250px;height:200px">
                                 <span class="status">0%</span>
                                 <div class="overlay"></div>
                             </a>
@@ -34,10 +34,11 @@
                                 <h3><a href="#"><?php echo $product->getName(); ?></a></h3>
                                 <div class="d-flex">
                                     <div class="pricing">
-                                        <p class="price"><span
-                                                    class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span
-                                                    class="price-sale"><?php echo floor($product->getPrice() - $product->getPrice() * 0 / 100) ?></span>
+                                        <p class="price">
+                                            <span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span>
+                                            <span class="price-sale"><?php echo floor($product->getPrice() - $product->getPrice() * 0 / 100) ?></span>
                                         </p>
+
                                     </div>
                                 </div>
                                 <div class="bottom-area d-flex px-3">
@@ -46,7 +47,7 @@
                                            class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                             <span><i class="ion-ios-menu"></i></span>
                                         </a>
-                                        <a href="#"
+                                        <a href="index.php?page=&id=<?php echo $product->getProductId() ?>"
                                            class="buy-now d-flex justify-content-center align-items-center mx-1">
                                             <span><i class="ion-ios-cart"></i></span>
                                         </a>
@@ -54,9 +55,9 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
     </section>
 <?php include_once "view/core/group_member.php" ?>
