@@ -14,7 +14,10 @@ class ProductDB
 
     public function getListProduct($start, $limit)
     {
-        $sql = "SELECT * FROM products LIMIT $start, $limit";
+        $sql = "SELECT * FROM products p 
+                INNER JOIN categories c
+                ON p.category = c.category_id
+                LIMIT $start, $limit";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         return $this->createProductFromData($result);
@@ -84,7 +87,7 @@ class ProductDB
     {
         $arr = [];
         foreach ($result as $item) {
-            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category_name']);
             $product->setProductId($item['product_id']);
             array_push($arr, $product);
         }
@@ -138,6 +141,15 @@ class ProductDB
         $sql = "SELECT COUNT(product_id) as total FROM `products`";
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll();
+    }
+
+    public function searchProductByCategoryId($category_id)
+    {
+        $sql = "SELECT * FROM products
+                WHERE category = $category_id ";
+        $stmt = $this->conn->query($sql);
+        $result = $stmt->fetchAll();
+        return $this->createProductFromData($result);
     }
 
 }
