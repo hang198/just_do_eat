@@ -82,6 +82,9 @@ switch ($page) {
     case 'add':
         $productController->createProduct();
         break;
+    case 'edit':
+        $productController->editProduct();
+        break;
     default:
         $productController->index();
 }

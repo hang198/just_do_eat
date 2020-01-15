@@ -34,13 +34,14 @@
                             <a class="dropdown-item" href="shop.html">Trang cá nhân</a>
                             <a class="dropdown-item" href="wishlist.html">Đổi thông tin</a>
                             <a class="dropdown-item" href="product-single.html">Đổi mật khẩu</a>
-                            <a class="dropdown-item" href="cart.html">Thoát</a>
+                            <a class="dropdown-item" href="index.php">Thoát</a>
                         </div>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item"><a href="register.php" class="nav-link mt-2">Register</a></li>
                     <li class="nav-item"><a href="login.php" class="nav-link mt-2">Login</a></li>
                 <?php } ?>
+                <a href="index.php?page=add">Add</a>
             </ul>
         </div>
     </div>
