@@ -50,8 +50,6 @@ class ProductController
 
     }
 
-
-
     public function getValueProduct()
     {
         $id = isset($_GET['id']) ? $_GET['id'] : null;

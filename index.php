@@ -61,10 +61,9 @@ switch ($page){
         $productController->createProduct();
         break;
     default:
-        $productController->index();
+            $productController->index();
+
 }
-
-
 ?>
 
     <?php include_once "view/core/group_member.php" ?>
