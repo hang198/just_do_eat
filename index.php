@@ -57,6 +57,9 @@ switch ($page){
     case 'product':
         $productController->getValueProduct();
         break;
+    case 'add':
+        $productController->createProduct();
+        break;
     default:
         $productController->index();
 }

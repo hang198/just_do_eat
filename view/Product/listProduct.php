@@ -20,11 +20,12 @@
         </div>
     </form>
         <div class="row">
+
             <?php foreach ($products as $product) : ?>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
                     <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>" class="img-prod"><img
-                            class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+                            class="img-fluid" src="images/<?php echo $product->getImg() ?>" alt="Colorlib Template"style="width:250px;height:200px">
                         <span class="status">0%</span>
                         <div class="overlay"></div>
                     </a>
@@ -36,6 +37,7 @@
                                         class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span><span
                                         class="price-sale"><?php echo floor($product->getPrice() - $product->getPrice() * 0 / 100) ?></span>
                                 </p>
+
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
@@ -44,7 +46,7 @@
                                     class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                     <span><i class="ion-ios-menu"></i></span>
                                 </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <a href="index.php?page=&id=<?php echo $product->getProductId() ?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
                             </div>
