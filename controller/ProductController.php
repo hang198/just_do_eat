@@ -17,6 +17,8 @@ class ProductController
         $total_records = $this->productDB->totalRecordsPage();
         $total_page = ceil($total_records[0]['total'] / $limit);
 
+            $this->deleteProduct();
+
         if (isset($_POST['sortBy'])) {
             $sortBy = $_POST['sortBy'];
             $products = $this->productDB->sortBy($sortBy);
@@ -29,8 +31,19 @@ class ProductController
         } else {
             $products = $this->productDB->getListProduct($start, $limit);
         }
-        include_once "view/Product/listProduct.php";
-        include_once 'view/Product/pagination.php';
+        include_once "view/product/listProduct.php";
+        include_once 'view/product/pagination.php';
+    }
+
+    public function deleteProduct()
+    {
+        $product_id=$_GET['id'];
+        if($product_id!==null){
+            $product=$this->productDB->getValueProduct($product_id);
+            $this->productDB->deleteProduct($product_id);
+            unlink('images/'.$product->getImg());
+        }
+
     }
 
     public function createProduct()
@@ -46,6 +59,28 @@ class ProductController
             $category = $_POST['category'];
             $product = new Product($name, $price, $quantity, $description, $img, $category);
             $this->productDB->createProduct($product);
+
+        }
+
+    }
+
+    public function editProduct()
+    {
+        $product_id = isset($_GET['id']) ? $_GET['id'] : null;
+        $product = $this->productDB->getValueProduct($product_id);
+        include_once "view/product/edit.php";
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $this->productDB->upload();
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $quantity = $_POST['quantity'];
+            $description = $_POST['description'];
+            $img = date('H:i:s') . $_FILES['img']['name'];
+            $category = $_POST['category'];
+            $productNew = new Product($name, $price, $quantity, $description, $img, $category);
+            $this->productDB->editProduct($product_id, $productNew);
+            unlink('images/' . $product->getImg());
+            header('location: index.php');
         }
 
     }
@@ -54,6 +89,6 @@ class ProductController
     {
         $id = isset($_GET['id']) ? $_GET['id'] : null;
         $product = $this->productDB->getValueProduct($id);
-        include_once "view/Product/productDetail.php";
+        include_once "view/product/productDetail.php";
     }
 }
