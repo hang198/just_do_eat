@@ -1,5 +1,5 @@
 <nav class="content-center">
-    <ul class="pagination justify-content-center pagination-lg">
+    <ul class="pagination justify-content-center">
         <?php for($i=1;$i<=$total_page;$i++){ ?>
         <li class="page-item <?php if ($current_page == $i): ?>active<?php endif; ?>">
             <?php if ($current_page == $i){ ?>
