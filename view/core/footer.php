@@ -1,4 +1,4 @@
-<footer class="ftco-footer ftco-section mt-4">
+<footer class="ftco-footer ftco-section mt-5 ">
     <div class="container">
         <div class="row">
             <div class="mouse">

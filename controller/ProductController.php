@@ -29,8 +29,8 @@ class ProductController
         } else {
             $products = $this->productDB->getListProduct($start, $limit);
         }
-        include_once "view/Product/listProduct.php";
-        include_once 'view/Product/pagination.php';
+        include_once "view/product/listProduct.php";
+        include_once 'view/product/pagination.php';
     }
 
     public function createProduct()
@@ -56,6 +56,6 @@ class ProductController
     {
         $id = isset($_GET['id']) ? $_GET['id'] : null;
         $product = $this->productDB->getValueProduct($id);
-        include_once "view/Product/productDetail.php";
+        include_once "view/product/productDetail.php";
     }
 }
