@@ -8,7 +8,7 @@
         </button>
 
         <form class="form-inline">
-            <input class="form-control mr-sm-2" name="keyword">
+            <input class="form-control mr-sm-2" name="keyword" placeholder="search">
         </form>
 
         <div class="collapse navbar-collapse">
