@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="?page=login" class="nav-link">Login</a>
+                    <a href="view/user/login.php" class="nav-link">Login</a>
                 </li>
             </ul>
         </div>

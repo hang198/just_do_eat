@@ -1,4 +1,7 @@
 <?php
+
+ob_start();
+
 include_once "model/database/DBConnect.php";
 include_once "model/Product/Product.php";
 include_once "model/Product/ProductDB.php";
@@ -6,6 +9,7 @@ include_once "controller/ProductController.php";
 include_once "model/User/User.php";
 include_once "model/User/UserDB.php";
 include_once "controller/UserController.php";
+
 $productController = new ProductController();
 $userController = new UserController();
 $page = isset($_GET['page']) ? $_GET['page'] : null;
@@ -44,7 +48,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="css.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
@@ -63,12 +67,12 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 <?php
 switch ($page) {
-    case "login":
-        $userController->checkLogin();
-        break;
-    case "signUp":
-        $userController->addUser();
-        break;
+//    case "login":
+//        $userController->login();
+//        break;
+//    case "signUp":
+//        $userController->addUser();
+//        break;
     case 'product':
         $productController->getValueProduct();
         break;
