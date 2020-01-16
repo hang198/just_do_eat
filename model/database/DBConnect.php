@@ -13,8 +13,8 @@ class DBConnect
     public function __construct()
     {
         $this->dsn = "mysql:host=localhost;dbname=just_do_eat;charset=utf8";
-        $this->username = "root";
-        $this->password = "password";
+        $this->username = "quangdong";
+        $this->password = "@Dong071094";
     }
 
     public function connect()
