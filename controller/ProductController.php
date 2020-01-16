@@ -41,7 +41,6 @@ class ProductController
                 echo '<script> alert("Sản phẩm đã có trong giỏ")</script>';
             }else{
             setcookie('product_id'.$product_id, $product_id, time() + 3000);
-             $_COOKIE['product_id'.$product_id];
              echo '<script> alert("Bạn đã thêm vào hàng vào giỏ")</script>';
             }
         };
@@ -63,10 +62,9 @@ class ProductController
         $products=[];
         foreach ($_COOKIE as $item){
             $product=$this->productDB->getValueProduct($item);
-            $product->setProductId($item['product_id']);
             array_push($products,$product);
         }
-        if(!isset($products)){
+        if($products==null){
             echo '<script>alert("Giỏ hàng rỗng")</script>';
 //            header("location: index.php");
         }else{
@@ -74,8 +72,6 @@ class ProductController
         }
 
     }
-
-
 
     public function deleteProduct()
     {

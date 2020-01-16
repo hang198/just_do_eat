@@ -89,7 +89,9 @@ class ProductDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        return new Product($result[0]['product_name'], $result[0]['price'], $result[0]['quantity'], $result[0]['description'], $result[0]['img'], $result[0]['category']);
+        $product = new Product($result[0]['product_name'], $result[0]['price'], $result[0]['quantity'], $result[0]['description'], $result[0]['img'], $result[0]['category']);
+        $product->setProductId($result[0]['product_id']);
+        return $product;
     }
 
     public function upload()
