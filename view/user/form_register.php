@@ -50,7 +50,7 @@
                                 <i class="fa fa-cloud-upload icon"></i>
                             </span>
                         </div>
-                        <input type="file" class="form-control" style="" placeholder="avatar" name="avatar">
+                        <input type="file" class="form-control" placeholder="avatar" name="avatar">
                     </div>
                     <div class="input-group form-group col-12 ml-3 float-left">
                         <div class="input-group-prepend">

@@ -1,6 +1,6 @@
 <?php
 
-ob_start();
+session_start();
 
 include_once "model/database/DBConnect.php";
 include_once "model/Product/Product.php";

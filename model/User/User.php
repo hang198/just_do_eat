@@ -11,8 +11,9 @@ class User
     private $address;
     private $phone;
     private $avatar;
+    private $position;
 
-    public function __construct($_username, $_password, $_email, $_address, $_phone, $_avatar)
+    public function __construct($_username, $_password, $_email, $_address, $_phone, $_avatar, $position)
     {
         $this->username = $_username;
         $this->password = $_password;
@@ -20,6 +21,7 @@ class User
         $this->address = $_address;
         $this->phone = $_phone;
         $this->avatar = $_avatar;
+        $this->position = $position;
     }
 
     /**
@@ -79,6 +81,14 @@ class User
     }
 
     /**
+     * Get the value of position
+     */ 
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
      * @param mixed $user_id
      */
     public function setUserId($user_id)
@@ -132,5 +142,17 @@ class User
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
+    }
+
+    /**
+     * Set the value of position
+     *
+     * @return  self
+     */ 
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
     }
 }

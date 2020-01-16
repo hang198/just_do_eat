@@ -1,5 +1,6 @@
 <?php include_once "view/core/banner.php" ?>
 <?php include_once "view/core/especial.php" ?>
+
     <section>
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
@@ -15,8 +16,8 @@
             <form method="POST">
                 <div class="text-right form-group">
                     <select class="btn btn-success" name="sortBy" onchange="this.form.submit()">
-                        <option value="ASC" <?php if ($sortBy == 'ASC'): ?>selected<?php endif; ?>>Tăng dần</option>
-                        <option value="DESC" <?php if ($sortBy == 'DESC'): ?>selected<?php endif; ?>>Giảm dần</option>
+                        <option value="ASC" <?php if ($sortBy == 'ASC'): ?>selected<?php endif; ?>>Rẻ nhất</option>
+                        <option value="DESC" <?php if ($sortBy == 'DESC'): ?>selected<?php endif; ?>>Đắt nhất</option>
                     </select>
                 </div>
             </form>
@@ -60,4 +61,3 @@
                 <?php endforeach; ?>
             </div>
     </section>
-<?php include_once "view/core/group_member.php" ?>

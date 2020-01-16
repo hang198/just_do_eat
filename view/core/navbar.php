@@ -25,21 +25,23 @@
                 <li class="nav-item"><a href="about.html" class="nav-link mt-2">About</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link mt-2"><span
                                 class="icon-shopping_cart"></span>[0]</a></li>
-                <?php if (!$_SESSION["admin"]) { ?>
+                <?php if ($_SESSION["admin"]) { ?>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false"><img style="width:40px;height:40px"
-                                                                           src="images/person_1.jpg"></a>
+                                                                           src="images/<?php echo $_SESSION["Avatar"] ?>"></a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="shop.html">Trang cá nhân</a>
-                            <a class="dropdown-item" href="wishlist.html">Đổi thông tin</a>
-                            <a class="dropdown-item" href="product-single.html">Đổi mật khẩu</a>
-                            <a class="dropdown-item" href="cart.html">Thoát</a>
+                            <a class="dropdown-item" href="/just_do_eat/view/user/index.php?id=<?php echo $_SESSION["idUser"] ?>">Trang cá nhân</a>
+                            <a class="dropdown-item" href="/just_do_eat/view/user/index.php?page=editInfo&id=<?php echo $_SESSION["idUser"] ?>">Đổi thông tin</a>
+                            <a class="dropdown-item" href="/just_do_eat/view/user/index.php?page=editPass&id=<?php echo $_SESSION["idUser"] ?>">Đổi mật khẩu</a>
+                            <a class="dropdown-item" href="/just_do_eat/view/user/index.php?page=logout">Thoát</a>
                         </div>
                     </li>
+
                 <?php } else { ?>
-                    <li class="nav-item"><a href="register.php" class="nav-link mt-2">Register</a></li>
-                    <li class="nav-item"><a href="login.php" class="nav-link mt-2">Login</a></li>
+                    <li class="nav-item"><a href="/just_do_eat/view/user/index.php?page=signup" class="nav-link mt-2"><strong>Register</strong></a></li>
+                    <li class="nav-item"><a href="/just_do_eat/view/user/index.php?page=login" class="nav-link mt-2"><strong>Login</strong></a></li>
                 <?php } ?>
             </ul>
         </div>

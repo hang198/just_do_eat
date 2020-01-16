@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once "../../model/database/DBConnect.php";
 include_once "../../model/Product/Product.php";
@@ -64,11 +65,23 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 switch ($page){
-    case "signup":
-        $userController->addUser();
-        break;
+      case "signup":
+            $userController->addUser();
+      break;
+      case "logout":
+            $userController->logout();
+      break;
+      case "login":
+            $userController->login();
+      break;
+      case "editInfo":
+            $userController->editUser();
+      break;
+      case "editPass":
+            $userController->editPass();
+      break;
     default:
-        $userController->login();
+        $userController->infoUser();
         break;
 }
 ?>
