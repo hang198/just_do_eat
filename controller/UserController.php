@@ -24,7 +24,7 @@ class UserController
     public function addUser()
     {
         $avatar = $this->productDB->upload();
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include_once "form_register.php";
         } else {
@@ -63,18 +63,19 @@ class UserController
         $user_id = $_GET['id'];
         $userById = $this->userDB->getUserById($user_id);
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
             include_once "edit_user.php";
-            $_SESSION["Avatar"] = $userById->getAvatar();
         } else {
-            if($_FILES['img']['name']){
-                unlink("/../../imgages/".$userById->getAvatar());
+            if ($_FILES['img']['name']) {
+                unlink("../../images/" . $userById->getAvatar());
                 $avatar = $this->productDB->upload();
+                $_SESSION["Avatar"] = $avatar;
             } else {
                 $avatar = $userById->getAvatar();
             }
             $user = new User(null, null, $_POST['email'], $_POST['address'], $_POST['phone'], $avatar, null);
             $this->userDB->editUser($userById, $user);
-            
+
             header("Location: ../../index.php");
         }
     }
