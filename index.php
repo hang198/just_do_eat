@@ -40,8 +40,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
     <link rel="stylesheet" href="css/aos.css">
     <link href="css/css/product.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/ionicons.min.css">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><link rel="stylesheet" href="css/ionicons.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="css.css" rel="stylesheet">
@@ -49,7 +48,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-
+    <link rel="stylesheet" href="css/css/cart.css">
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
@@ -71,6 +70,9 @@ switch ($page) {
         break;
     case 'edit':
         $productController->editProduct();
+        break;
+    case 'cart':
+        $productController->getCart();
         break;
     default:
             $productController->index();
@@ -107,6 +109,7 @@ switch ($page) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+
 </body>
 
 </html>

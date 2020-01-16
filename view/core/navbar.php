@@ -22,8 +22,8 @@
                         <a class="dropdown-item" href="wishlist.html">Đồ uống</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="about.html" class="nav-link mt-2">About</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link mt-2"><span
+                <li class="nav-item"><a href="#" class="nav-link mt-2">About</a></li>
+                <li class="nav-item cta cta-colored"><a href="index.php?page=cart" class="nav-link mt-2"><span
                                 class="icon-shopping_cart"></span>[0]</a></li>
                 <?php if (!$_SESSION["admin"]) { ?>
                     <li class="nav-item dropdown">

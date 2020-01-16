@@ -12,6 +12,7 @@ class ProductDB
         $this->conn = $db->connect();
     }
 
+
     public function getListProduct($start, $limit)
     {
         $sql = "SELECT * FROM products LIMIT $start, $limit";
@@ -45,15 +46,12 @@ class ProductDB
 
     public function editProduct($product_id, $product)
     {
-
-
         $name = $product->getName();
         $price = $product->getPrice();
         $quantity = $product->getQuantity();
         $description = $product->getDescription();
         $img = $product->getImg();
         $category = $product->getCategory();
-
         $sql = "UPDATE products 
                 SET product_name = '$name', price = '$price', quantity = '$quantity', 
                     description = '$description', img = '$img', category = '$category'
