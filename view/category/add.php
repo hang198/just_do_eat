@@ -1,8 +1,15 @@
+<?php
+session_start();
+if ($_SESSION['position'] !== 'admin') {
+    header("location: ../../index.php ");
+}
+?>
 <div class="container col-8 float-left text-light" style="background: rgb(0,0,0,0.2)">
-    <form method="post" class="mt-4 mb-4">
+    <form method="post" class="mt-4 mb-4 need-validation">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Tên mặt hàng</label>
-            <input type="text" class="form-control text-light" style="background: rgb(0,0,0,0.1)" name="name">
+            <label for="validationDefaultUsername">Tên mặt hàng</label>
+            <input type="text" class="form-control text-light" id="validationCustomUsername"
+                   style="background: rgb(0,0,0,0.1)" name="name" required>
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Mô tả mặt hàng</label>
@@ -13,4 +20,3 @@
         <input type="submit" value="Thêm sản phẩm" class="btn btn-success">
     </form>
 </div>
-

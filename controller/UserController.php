@@ -42,11 +42,12 @@ class UserController
             $users = $this->userDB->getListUser();
             foreach ($users as $user) {
                 if ($_POST['username'] == $user->getUsername() && $_POST['password'] == $user->getPassword()) {
-                    $_SESSION["admin"] = $user->getPosition();
+                    $_SESSION["position"] = $user->getPosition();
                     $_SESSION["idUser"] = $user->getUserId();
                     $_SESSION["Avatar"] = $user->getAvatar();
                     header("Location: ../../index.php");
                 }
+
             }
         }
 
@@ -75,7 +76,6 @@ class UserController
             }
             $user = new User(null, null, $_POST['email'], $_POST['address'], $_POST['phone'], $avatar, null);
             $this->userDB->editUser($userById, $user);
-
             header("Location: ../../index.php");
         }
     }

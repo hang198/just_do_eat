@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['position'] !== 'admin') {
+    header("location: ../../index.php ");
+}
+?>
 <div class="container col-8 float-left text-light" style="background: rgb(0,0,0,0.2)">
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -19,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Phân loại</label>
-            <select class="form-control" name="category">
+            <select class="form-control" name="category" required>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo $category->getCategoryId(); ?>" <?php if ($product->getProductId() == $category->getCategoryId()) echo "selected" ?>><?php echo $category->getName(); ?></option>
                 <?php endforeach; ?>
@@ -31,7 +37,7 @@
             <img src="../../images/<?php echo $product->getImg() ?>" style="width: 100px;height: 100px">
         </div>
 
-        <input type="submit" value="Edit" class="btn btn-secondary mb-3">
+        <input type="submit" value="Edit" class="btn btn-secondary mb-3" onclick="return confirm('bạn có chắc chắn muốn sửa sản phẩm này không ?')">
         <input type="reset" class="btn btn-danger mb-3" value="Reset">
     </form>
 </div>

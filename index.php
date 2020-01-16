@@ -81,14 +81,12 @@ switch ($page) {
     case 'product':
         $productController->getValueProduct();
         break;
-    case 'add':
-        $productController->createProduct();
-        break;
-    case 'edit':
-        $productController->editProduct();
+    case 'about':
+        include_once "view/user/about.php";
         break;
     default:
         $productController->index();
+        break;
 }
 ?>
 

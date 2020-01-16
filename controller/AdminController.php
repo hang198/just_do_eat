@@ -27,27 +27,36 @@ class AdminController
     // admin quản lí các sản phẩm
     public function addProduct()
     {
+
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $categories = $this->categoryDB->getCategoriesList();
             include_once "../product/add.php";
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             $product = $this->createNewProduct();
             $this->productDB->createProduct($product);
-            header("location: admin.php");
+            header("location: index.php");
         }
     }
 
     public function editProduct()
     {
+        $categories = $this->categoryDB->getCategoriesList();
+        $product = $this->productDB->getValueProduct($_GET['product_id']);
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            $categories = $this->categoryDB->getCategoriesList();
-            $product = $this->productDB->getValueProduct($_GET['product_id']);
             include_once "../product/edit.php";
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if ($_FILES['img']['name']) {
+                unlink("../../images/" .$product->getImg());
+                $image = $this->productDB->upload();
+            } else {
+                $image = $product->getImg();
+            }
             $product = $this->createNewProduct();
+            $product->setImg($image);
+
             $product_id = $_GET['product_id'];
             $this->productDB->editProduct($product_id, $product);
-            header("location: admin.php");
-
+            header("location: index.php");
         }
     }
 
@@ -61,7 +70,7 @@ class AdminController
     {
         $product_id = $_GET['product_id'];
         $this->productDB->deleteProduct($product_id);
-        header("location: admin.php");
+        header("location: index.php");
     }
 
     /**
@@ -89,7 +98,7 @@ class AdminController
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             $category = new Category($_POST['name'], $_POST['description']);
             $this->categoryDB->addCategory($category);
-            header("location: admin.php");
+            header("location: ?page=categoryList");
         }
     }
 
@@ -97,7 +106,7 @@ class AdminController
     {
         $category_id = $_GET['category_id'];
         $this->categoryDB->deleteCategory($category_id);
-        header("location: admin.php");
+        header("location: ?page=categoryList");
     }
 
     public function editCategory()
@@ -109,8 +118,22 @@ class AdminController
             $category_id = $_GET['category_id'];
             $category = new Category($_POST['name'], $_POST['description']);
             $this->categoryDB->editCategory($category_id, $category);
-            header("location: admin.php");
+            header("location: ?page=categoryList");
         }
+    }
+
+    //admin quản lí user
+    public function getListUser()
+    {
+        $users = $this->userDB->getListUser();
+        include_once "user_manager.php";
+    }
+
+    public function deleteUser()
+    {
+        $user_id = $_GET['user_id'];
+        $this->userDB->deleteUser($user_id);
+        header("location: ?page=userList");
     }
 
 }

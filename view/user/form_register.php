@@ -17,7 +17,7 @@
                                 <i class="fas fa-user icon"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="username" name="username">
+                        <input type="text" class="form-control" placeholder="username" name="username" required>
 
                     </div>
                     <div class="input-group form-group col-12 ml-3 float-left">
@@ -26,7 +26,7 @@
                                 <i class="fas fa-key icon"></i>
                             </span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password" name="password">
+                        <input type="password" class="form-control" placeholder="password" name="password" required>
                     </div>
                     <div class="input-group form-group col-12 ml-3 float-left">
                         <div class="input-group-prepend">
@@ -34,7 +34,7 @@
                                 <i class="fas fa-envelope icon"></i>
                             </span>
                         </div>
-                        <input type="email" class="form-control" placeholder="email" name="email">
+                        <input type="email" class="form-control" placeholder="email" name="email" required>
                     </div>
                     <div class="input-group form-group col-12 ml-3 float-left">
                         <div class="input-group-prepend">

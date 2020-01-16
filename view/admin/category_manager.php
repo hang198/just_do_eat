@@ -15,7 +15,8 @@
                 <td><?php echo $category->getDescription(); ?></td>
                 <td>
                     <a class="btn btn-danger text-light"
-                       href="?page=deleteCategory&category_id=<?php echo $category->getCategoryId(); ?>">
+                       href="?page=deleteCategory&category_id=<?php echo $category->getCategoryId(); ?>"
+                       onclick="return confirm('bạn có chắc chắn muốn xóa loại sản phẩm không này ?')">
                         Delete
                     </a>
                     <a class="btn btn-primary text-light ml-4"

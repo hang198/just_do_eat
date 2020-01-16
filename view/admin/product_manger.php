@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['position'] !== 'admin') {
+    header("location: ../../index.php ");
+}
+?>
 <div class="row col-10 ml-2 float-left text-light" style="background: rgb(0,0,0,0.5)">
     <table class="table table-striped text-light">
         <tr>
@@ -23,7 +29,8 @@
                 <td><?php echo $product->getCategory(); ?></td>
                 <td>
                     <a class="btn btn-danger text-light"
-                       href="?page=deleteProduct&product_id=<?php echo $product->getProductId(); ?>">
+                       href="?page=deleteProduct&product_id=<?php echo $product->getProductId(); ?>"
+                       onclick="return confirm('bạn có chắc chắn muốn xóa sản phẩm này không ?')">
                         Delete
                     </a>
                 </td>
