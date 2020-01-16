@@ -49,7 +49,7 @@
                                 </span>
                             </div>
                             <input type="file" class="form-control" onChange="displayImage(this)" id="idImage"
-                                name="avatar">
+                                name="img">
                         </div>
                         <div class="input-group form-group ml-3 float-left">
                             <div class="input-group-prepend">

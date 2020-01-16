@@ -42,16 +42,13 @@ class UserDB
     public function editUser($userById, $user)
     {
         $sql = "UPDATE users 
-                SET username = :username, password = :password, 
-                    email = :email, address = :address, phone = :phone, position = :position 
+                SET email = :email, address = :address, phone = :phone, avatar = :avatar
                 WHERE user_id = :user_id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':username', $userById->getUsername());
-        $stmt->bindParam(':password', $userById->getPassword());
         $stmt->bindParam(':email', $user->getEmail());
         $stmt->bindParam(':address', $user->getAddress());
         $stmt->bindParam(':phone', $user->getPhone());
-        $stmt->bindParam(':position', $userById->getPosition());
+        $stmt->bindParam(':avatar', $user->getAvatar());
         $stmt->bindParam(':user_id', $userById->getUserId());
         $stmt->execute();
 
@@ -60,16 +57,10 @@ class UserDB
     public function editPass($userById, $user)
     {
         $sql = "UPDATE users 
-                SET username = :username, password = :password, 
-                    email = :email, address = :address, phone = :phone , position = :position
+                SET password = :password
                 WHERE user_id = :user_id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':username', $userById->getUsername());
         $stmt->bindParam(':password', $user->getPassword());
-        $stmt->bindParam(':email', $userById->getEmail());
-        $stmt->bindParam(':address', $userById->getAddress());
-        $stmt->bindParam(':phone', $userById->getPhone());
-        $stmt->bindParam(':position', $userById->getPosition());
         $stmt->bindParam(':user_id', $userById->getUserId());
         $stmt->execute();
 

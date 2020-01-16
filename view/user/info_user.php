@@ -15,7 +15,7 @@
                 <div class="col-4">
                     <div class="form-group ml-3 text-center">
                         <div class="input-group-prepend">
-                            <img src="../../images/person_1.jpg" style="width:700px;height:200px" class="card-img-top"
+                            <img src="../../images/<?php echo $userById->getAvatar() ?>" style="width:700px;height:200px" class="card-img-top"
                                 alt="<?php echo $userById->getUsername() ?>">
                         </div>
                         <div class="p-3 mb-2 bg-dark text-white"><?php echo $userById->getPosition() ?></div>
