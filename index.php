@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once "model/database/DBConnect.php";
 include_once "model/Product/Product.php";
 include_once "model/Product/ProductDB.php";
