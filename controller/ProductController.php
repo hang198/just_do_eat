@@ -17,7 +17,7 @@ class ProductController
         $total_records = $this->productDB->totalRecordsPage();
         $total_page = ceil($total_records[0]['total'] / $limit);
 
-            $this->deleteProduct();
+//        $this->deleteProduct();
 
         if (isset($_POST['sortBy'])) {
             $sortBy = $_POST['sortBy'];
@@ -37,11 +37,11 @@ class ProductController
 
     public function deleteProduct()
     {
-        $product_id=$_GET['id'];
-        if($product_id!==null){
-            $product=$this->productDB->getValueProduct($product_id);
+        $product_id = $_GET['id'];
+        if ($product_id !== null) {
+            $product = $this->productDB->getValueProduct($product_id);
             $this->productDB->deleteProduct($product_id);
-            unlink('images/'.$product->getImg());
+            unlink('images/' . $product->getImg());
         }
 
     }
@@ -50,16 +50,8 @@ class ProductController
     {
         include_once "view/product/add.php";
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $this->productDB->upload();
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $quantity = $_POST['quantity'];
-            $description = $_POST['description'];
-            $img = date('H:i:s') . $_FILES['img']['name'];
-            $category = $_POST['category'];
-            $product = new Product($name, $price, $quantity, $description, $img, $category);
+            $product = $this->createProductObject();
             $this->productDB->createProduct($product);
-
         }
 
     }
@@ -70,14 +62,7 @@ class ProductController
         $product = $this->productDB->getValueProduct($product_id);
         include_once "view/product/edit.php";
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $this->productDB->upload();
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $quantity = $_POST['quantity'];
-            $description = $_POST['description'];
-            $img = date('H:i:s') . $_FILES['img']['name'];
-            $category = $_POST['category'];
-            $productNew = new Product($name, $price, $quantity, $description, $img, $category);
+            $productNew = $this->createProductObject();
             $this->productDB->editProduct($product_id, $productNew);
             unlink('images/' . $product->getImg());
             header('location: index.php');
@@ -91,4 +76,22 @@ class ProductController
         $product = $this->productDB->getValueProduct($id);
         include_once "view/product/productDetail.php";
     }
+
+    /**
+     * @return Product
+     */
+    public function createProductObject()
+    {
+        $this->productDB->upload();
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $quantity = $_POST['quantity'];
+        $description = $_POST['description'];
+        $img = date('H:i:s') . $_FILES['img']['name'];
+        $category = $_POST['category'];
+        $product = new Product($name, $price, $quantity, $description, $img, $category);
+        return $product;
+    }
+
+
 }

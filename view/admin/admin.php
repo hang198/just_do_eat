@@ -30,18 +30,37 @@ $adminController = new AdminController();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body style="background: url('../../images/bg_4.jpg') top left no-repeat;">
+<body style="background: url('../../images/bg_4.jpg') ">
 <?php include_once "navbar.php" ?>
 <div class="container mt-4">
     <?php
     include_once "left_menu.php";
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
     switch ($page) {
+
+        // product
         case 'deleteProduct':
             $adminController->deleteProduct();
             break;
         case 'addProduct':
             $adminController->addProduct();
+            break;
+        case 'editProduct':
+            $adminController->editProduct();
+            break;
+
+        //category
+        case 'categoryList':
+            $adminController->getListCategory();
+            break;
+        case 'addCategory':
+            $adminController->addCategory();
+            break;
+        case 'deleteCategory':
+            $adminController->deleteCategory();
+            break;
+        case 'editCategory':
+            $adminController->editCategory();
             break;
         default:
             $adminController->getListProduct();
