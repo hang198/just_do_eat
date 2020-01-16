@@ -14,7 +14,10 @@ class ProductDB
 
     public function getListProduct($start, $limit)
     {
-        $sql = "SELECT * FROM products LIMIT $start, $limit";
+        $sql = "SELECT * FROM products p 
+                INNER JOIN categories c
+                ON p.category = c.category_id
+                LIMIT $start, $limit";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         return $this->createProductFromData($result);
@@ -29,7 +32,7 @@ class ProductDB
         $img = $product->getImg();
         $category = $product->getCategory();
 
-        $sql = "INSERT INTO products(product_name, price, quantity, description, img, category) 
+        $sql = "INSERT INTO products(product_name, price, quantity, product_description, img, category) 
                 VALUE (:name, :price, :quantity, :description, :img, :category)";
 
         $stmt = $this->conn->prepare($sql);
@@ -45,8 +48,6 @@ class ProductDB
 
     public function editProduct($product_id, $product)
     {
-
-
         $name = $product->getName();
         $price = $product->getPrice();
         $quantity = $product->getQuantity();
@@ -56,7 +57,7 @@ class ProductDB
 
         $sql = "UPDATE products 
                 SET product_name = '$name', price = '$price', quantity = '$quantity', 
-                    description = '$description', img = '$img', category = '$category'
+                    product_description = '$description', img = '$img', category = '$category'
                 WHERE product_id = $product_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -78,7 +79,7 @@ class ProductDB
     {
         $arr = [];
         foreach ($result as $item) {
-            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['description'], $item['img'], $item['category']);
+            $product = new Product($item['product_name'], $item['price'], $item['quantity'], $item['product_description'], $item['img'], $item['category_name']);
             $product->setProductId($item['product_id']);
             array_push($arr, $product);
         }
@@ -90,28 +91,32 @@ class ProductDB
         $sql = "SELECT * FROM products WHERE product_id='$id'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetchAll();
-        return new Product($result[0]['product_name'], $result[0]['price'], $result[0]['quantity'], $result[0]['description'], $result[0]['img'], $result[0]['category']);
+        $result = $stmt->fetch();
+        return new Product($result['product_name'], $result['price'],
+            $result['quantity'], $result['product_description'],
+            $result['img'], $result['category']);
     }
 
     public function upload()
     {
-        $file_name = $_FILES['img']['name'];
+        $file_name = date("H:i:s") . $_FILES['img']['name'];
         $file_tmp = $_FILES['img']['tmp_name'];
         $file_type = $_FILES['img']['type'];
         $file_ext = strtolower(end(explode('/', $file_type)));
         $ext = ["jpg", "png", "jpeg"];
         if (in_array($file_ext, $ext)) {
-            move_uploaded_file($file_tmp, "images/" . date("H:i:s") . $file_name);
+            move_uploaded_file($file_tmp, "../../images/" . $file_name);
+            return $file_name;
         }
     }
 
     public function searchProduct($keyword)
     {
         $sql = "SELECT * FROM products p
-        INNER JOIN categories c
-        ON p.category = c.category_id
-        WHERE p.product_name LIKE '%$keyword%' OR c.category_name LIKE '%$keyword%'";
+                INNER JOIN categories c
+                ON p.category = c.category_id
+                WHERE p.product_name LIKE '%$keyword%' 
+                OR c.category_name LIKE '%$keyword%'";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         return $this->createProductFromData($result);
@@ -130,6 +135,15 @@ class ProductDB
         $sql = "SELECT COUNT(product_id) as total FROM `products`";
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll();
+    }
+
+    public function searchProductByCategoryId($category_id)
+    {
+        $sql = "SELECT * FROM products
+                WHERE category = $category_id ";
+        $stmt = $this->conn->query($sql);
+        $result = $stmt->fetchAll();
+        return $this->createProductFromData($result);
     }
 
 }

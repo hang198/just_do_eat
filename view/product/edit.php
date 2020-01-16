@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-8 float-left text-light" style="background: rgb(0,0,0,0.2)">
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleFormControlInput1">Tên sản phẩm</label>
@@ -14,23 +14,24 @@
         </div>
         <div class="form-group">
             <label>Ghi chú</label>
-            <textarea class="form-control" name="description" rows="3"><?php echo $product->getDescription() ?></textarea>
+            <textarea class="form-control" name="description"
+                      rows="3"><?php echo $product->getDescription() ?></textarea>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Phân loại</label>
-            <select class="form-control" name="category" >
-                <option>chon the loai</option>
-                <option value="1">Đồ ăn</option>
-                <option value="Đồ uống">Đồ uống</option>
+            <select class="form-control" name="category">
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category->getCategoryId(); ?>" <?php if ($product->getProductId() == $category->getCategoryId()) echo "selected" ?>><?php echo $category->getName(); ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="exampleFormControlInput1">Ảnh sản phẩm</label>
-            <input type="file" class="form-control" name="img" value="<?php echo $product->getImg() ?>">
-            <img src="images/<?php echo $product->getImg() ?>" style="width: 100px;height: 100px">
+            <input type="file" name="img" class="form-control mb-2" value="<?php echo $product->getImg(); ?>">
+            <img src="../../images/<?php echo $product->getImg() ?>" style="width: 100px;height: 100px">
         </div>
 
-        <button>Edit</button>
-        <button>Thoat</button>
+        <input type="submit" value="Edit" class="btn btn-secondary mb-3">
+        <input type="reset" class="btn btn-danger mb-3" value="Reset">
     </form>
 </div>

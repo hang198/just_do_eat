@@ -18,10 +18,12 @@ class CategoryDB
 
     public function addCategory($category)
     {
-        $sql = "INSERT INTO categories(category_name, desciption) VALUE (:category_name, :description)";
+        $name = $category->getName();
+        $description = $category->getDescription();
+        $sql = "INSERT INTO categories(category_name, description) VALUE (:category_name, :description)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':category', $category->getName());
-        $stmt->bindParam(':description', $category->getDescription());
+        $stmt->bindParam(':category_name', $name);
+        $stmt->bindParam(':description', $description);
         $stmt->execute();
     }
 
@@ -32,12 +34,33 @@ class CategoryDB
         $stmt->execute();
         $result = $stmt->fetchAll();
         $arr = [];
-        foreach ($result as $item){
+        foreach ($result as $item) {
             $category = new Category($item['category_name'], $item['description']);
             $category->setCategoryId($item['category_id']);
             array_push($arr, $category);
         }
         return $arr;
+    }
+
+    public function deleteCategory($category_id)
+    {
+        $sql = "DELETE FROM categories WHERE category_id = $category_id";
+        $stmt = $this->conn->query($sql);
+        $stmt->execute();
+    }
+
+    public function editCategory($category_id, $category)
+    {
+        $category_name = $category->getName();
+        $category_description = $category->getDescription();
+        $sql = "UPDATE categories 
+                SET category_name = :category_name, description = :description
+                WHERE category_id = :category_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':category_name', $category_name);
+        $stmt->bindParam(':description', $category_description);
+        $stmt->bindParam(':category_id', $category_id);
+        $stmt->execute();
     }
 
     public function getCategoryById($category_id)
