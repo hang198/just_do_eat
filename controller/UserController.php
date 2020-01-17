@@ -45,6 +45,8 @@ class UserController
                     $_SESSION["position"] = $user->getPosition();
                     $_SESSION["idUser"] = $user->getUserId();
                     $_SESSION["Avatar"] = $user->getAvatar();
+                    $_SESSION['product_id'] = [];
+                    $_SESSION['quantity'] = [];
                     header("Location: ../../index.php");
                 }
 

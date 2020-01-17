@@ -12,7 +12,6 @@ class ProductDB
         $this->conn = $db->connect();
     }
 
-
     public function getListProduct($start, $limit)
     {
         $sql = "SELECT * FROM products p 

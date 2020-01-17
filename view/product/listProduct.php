@@ -51,7 +51,7 @@
                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
-                                    <a href="index.php?page=&id=<?php echo $product->getProductId(); ?>"
+                                    <a href="index.php?product_id=<?php echo $product->getProductId(); ?>"
                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                         <span><i class="ion-ios-cart"></i></span>
                                     </a>

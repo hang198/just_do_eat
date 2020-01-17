@@ -91,6 +91,12 @@ switch ($page) {
     case 'cart':
         $productController->getCart();
         break;
+    case 'cartDelete':
+        $productController->deleteProductCart();
+        break;
+    case 'orderList':
+        $productController->getOrder();
+        break;
     default:
         $productController->index();
         break;

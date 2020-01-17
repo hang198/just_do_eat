@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class ProductController
 {
     public $productDB;
@@ -12,6 +14,7 @@ class ProductController
     public function index()
     {
         $limit = 8;
+        header("location: index.php?page=cart");
         $current_page = isset($_GET['pageNumber']) ? $_GET['pageNumber'] : 1;
         $start = ($current_page - 1) * $limit;
         $total_records = $this->productDB->totalRecordsPage();
@@ -37,43 +40,43 @@ class ProductController
 
     public function addCart()
     {
-        $product_id = $_GET['id'];
+        $product_id = $_GET['product_id'];
         if (isset($product_id)) {
-            if (isset($_COOKIE['product_id'])) {
-                echo '<script> alert("Sản phẩm đã có trong giỏ")</script>';
+            if (in_array($product_id, $_SESSION['product_id'])) {
+                echo "<script>alert('sản phẩm này đã có trong giỏ hàng')</script>";
             } else {
-                setcookie('product_id'.$product_id, $product_id, time() + 3000);
-                setcookie('test',122,time() + 3000);
-                var_dump($_COOKIE['test']);
-                var_dump(1);
-                echo '<script> alert("Bạn đã thêm vào hàng vào giỏ")</script>';
+                array_push($_SESSION['product_id'], $product_id);
+//            echo "<script>alert('bạn đã thêm sản phẩm này vào trong giỏ hàng')</script>";
             }
         }
     }
 
+    public function getOrder()
+    {
+        array_push($_SESSION['quantity'], $_POST['quantity']);
+        var_dump($_SESSION['quantity']);
+    }
+
     public function deleteProductCart()
     {
-        $product_id = $_GET['id'];
-        if ($product_id !== null) {
-            setcookie('product_id' . $product_id, $product_id, time() - 3000);
-            header("location: index.php?page=cart");
+        if ($product_id = $_GET['id']) {
+            foreach ($_SESSION['product_id'] as $key => $id) {
+                if ($id == $product_id) {
+                    array_splice($_SESSION['product_id'], $key, 1);
+                }
+            }
         }
-
     }
 
     public function getCart()
     {
+        $cart = [];
         $this->deleteProductCart();
-        $products = [];
-        foreach ($_COOKIE as $item) {
-            $product = $this->productDB->getValueProduct($item);
-            array_push($products, $product);
+        foreach ($_SESSION['product_id'] as $id) {
+            $product = $this->productDB->getValueProduct($id);
+            array_push($cart, $product);
         }
-        if ($products == null) {
-            echo '<script>alert("Giỏ hàng rỗng")</script>';
-        } else {
-            include_once "view/product/cart.php";
-        }
+        include_once "view/product/cart.php";
     }
 
     public function getValueProduct()
