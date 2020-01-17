@@ -1,7 +1,7 @@
 <?php
 
-use User\User;
-use User\UserDB;
+// use User\User;
+// use User\UserDB;
 
 class UserController
 {
@@ -64,17 +64,17 @@ class UserController
         $userById = $this->userDB->getUserById($user_id);
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include_once "edit_user.php";
-            $_SESSION["Avatar"] = $userById->getAvatar();
         } else {
             if($_FILES['img']['name']){
-                unlink("/../../imgages/".$userById->getAvatar());
+                unlink("../../images/".$userById->getAvatar());
                 $avatar = $this->productDB->upload();
+                $_SESSION["Avatar"] = $avatar;
+
             } else {
                 $avatar = $userById->getAvatar();
             }
             $user = new User(null, null, $_POST['email'], $_POST['address'], $_POST['phone'], $avatar, null);
             $this->userDB->editUser($userById, $user);
-            
             header("Location: ../../index.php");
         }
     }

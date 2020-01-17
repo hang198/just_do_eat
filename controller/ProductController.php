@@ -2,7 +2,7 @@
 
 class ProductController
 {
-    public $productDB;
+    private $productDB;
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class ProductController
 
         if (isset($_POST['sortBy'])) {
             $sortBy = $_POST['sortBy'];
-            $products = $this->productDB->sortBy($sortBy);
+            $products = $this->productDB->sortBy($sortBy, $start, $limit);
         } elseif (isset($_GET['keyword'])) {
             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : null;
             $products = $this->productDB->searchProduct($keyword);
@@ -92,6 +92,5 @@ class ProductController
         $product = new Product($name, $price, $quantity, $description, $img, $category);
         return $product;
     }
-
 
 }

@@ -1,120 +1,145 @@
 <?php
 
 
-namespace Order;
-
-
 class Order
 {
-    private $oder_id;
-    private $product;
-    private $quantity;
-    private $customer;
-    private $status;
+    private $orderId;
+    private $productId;
+    private $orderAmount;
     private $createDate;
+    private $totalPrice;
+    private $price;
+    
 
-    public function __construct($product, $quantity, $customer, $status)
+    public function __construct($productId, $orderAmount, $createDate, $totalPrice)
     {
-        $this->product = $product;
-        $this->quantity = $quantity;
-        $this->customer = $customer;
-        $this->status = $status;
+        $this->productId = $productId;
+        $this->orderAmount = $orderAmount;
+        $this->createDate = $createDate;
+        $this->totalPrice = $totalPrice;
+
+    }
+
+    
+
+    /**
+     * Get the value of orderId
+     */ 
+    public function getOrderId()
+    {
+        return $this->orderId;
     }
 
     /**
-     * @return mixed
-     */
-    public function getOderId()
+     * Set the value of orderId
+     *
+     * @return  self
+     */ 
+    public function setOrderId($orderId)
     {
-        return $this->oder_id;
+        $this->orderId = $orderId;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getProduct()
+     * Get the value of productId
+     */ 
+    public function getProductId()
     {
-        return $this->product;
+        return $this->productId;
     }
 
     /**
-     * @return mixed
-     */
-    public function getQuantity()
+     * Set the value of productId
+     *
+     * @return  self
+     */ 
+    public function setProductId($productId)
     {
-        return $this->quantity;
+        $this->productId = $productId;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getCustomer()
+     * Get the value of orderAmount
+     */ 
+    public function getOrderAmount()
     {
-        return $this->customer;
+        return $this->orderAmount;
     }
 
     /**
-     * @return mixed
-     */
-    public function getStatus()
+     * Set the value of orderAmount
+     *
+     * @return  self
+     */ 
+    public function setOrderAmount($orderAmount)
     {
-        return $this->status;
+        $this->orderAmount = $orderAmount;
+
+        return $this;
     }
 
+
     /**
-     * @return mixed
-     */
+     * Get the value of createDate
+     */ 
     public function getCreateDate()
     {
         return $this->createDate;
     }
 
     /**
-     * @param mixed $oder_id
-     */
-    public function setOderId($oder_id)
-    {
-        $this->oder_id = $oder_id;
-    }
-
-    /**
-     * @param mixed $product
-     */
-    public function setProduct($product)
-    {
-        $this->product = $product;
-    }
-
-    /**
-     * @param mixed $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * @param mixed $customer
-     */
-    public function setCustomer($customer)
-    {
-        $this->customer = $customer;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @param mixed $createDate
-     */
+     * Set the value of createDate
+     *
+     * @return  self
+     */ 
     public function setCreateDate($createDate)
     {
         $this->createDate = $createDate;
+
+        return $this;
     }
 
+    /**
+     * Get the value of totalPrice
+     */ 
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * Set the value of totalPrice
+     *
+     * @return  self
+     */ 
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of price
+     */ 
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set the value of price
+     *
+     * @return  self
+     */ 
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
 }

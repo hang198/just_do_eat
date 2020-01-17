@@ -3,6 +3,9 @@
 session_start();
 
 include_once "model/database/DBConnect.php";
+include_once "model/Order/Order.php";
+include_once "model/Order/OrderDB.php";
+include_once "controller/OrderController.php";
 include_once "model/Product/Product.php";
 include_once "model/Product/ProductDB.php";
 include_once "controller/ProductController.php";
@@ -12,6 +15,7 @@ include_once "controller/UserController.php";
 
 $productController = new ProductController();
 $userController = new UserController();
+$orderController = new OrderController();
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 ?>
@@ -86,6 +90,9 @@ switch ($page) {
         break;
     case 'edit':
         $productController->editProduct();
+        break;
+    case 'cart':
+        $orderController->showCart();
         break;
     default:
         $productController->index();
