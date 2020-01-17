@@ -32,24 +32,26 @@
                             <div class="overlay"></div>
                         </a>
                         <div class="text py-3 pb-4 px-3 text-center">
-                            <h3><a href="#"><?php echo $product->getName(); ?></a></h3>
+                            <h3>
+                                <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>"><?php echo $product->getName(); ?></a>
+                            </h3>
                             <div class="d-flex">
                                 <div class="pricing">
                                     <p class="price">
                                         <span class="mr-2 price-dc"><?php echo $product->getPrice(); ?></span>
                                         <span
-                                                class="price-sale"><?php echo floor($product->getPrice() - $product->getPrice() * 0 / 100) ?></span>
+                                            class="price-sale"><?php echo floor($product->getPrice() - $product->getPrice() * 0 / 100) ?></span>
                                     </p>
 
                                 </div>
                             </div>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="index.php?page=product&id=<?php echo $product->getProductId() ?>"
+                                    <a href="?page=product&product_id=<?php $product->getProductId(); ?>"
                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
-                                    <a href="index.php?page=edit&id=<?php echo $product->getProductId() ?>"
+                                    <a href="index.php?page=&id=<?php echo $product->getProductId(); ?>"
                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                         <span><i class="ion-ios-cart"></i></span>
                                     </a>
@@ -60,4 +62,5 @@
                 </div>
             <?php endforeach; ?>
         </div>
+    </div>
 </section>

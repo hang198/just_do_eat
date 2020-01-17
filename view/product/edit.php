@@ -20,8 +20,9 @@ if ($_SESSION['position'] !== 'admin') {
         </div>
         <div class="form-group">
             <label>Ghi chú</label>
-            <textarea class="form-control" name="description"
-                      rows="3"><?php echo $product->getDescription() ?></textarea>
+            <textarea class="form-control" name="description" rows="3">
+                <?php echo $product->getDescription(); ?>
+            </textarea>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Phân loại</label>
@@ -33,11 +34,29 @@ if ($_SESSION['position'] !== 'admin') {
         </div>
         <div class="form-group mb-3">
             <label for="exampleFormControlInput1">Ảnh sản phẩm</label>
-            <input type="file" name="img" class="form-control mb-2" value="<?php echo $product->getImg(); ?>">
-            <img src="../../images/<?php echo $product->getImg() ?>" style="width: 100px;height: 100px">
+            <label><img onClick="triggerClick()" id="Display" src="../../images/<?php echo $product->getImg() ?>"
+                        class="img-thumbnail avatar" alt="<?php echo $product->getName() ?>"
+                        style="width: 100px;height: 100px"></label>
+            <input type="file" class="form-control" onChange="displayImage(this)" id="idImage" name="img">
         </div>
 
-        <input type="submit" value="Edit" class="btn btn-secondary mb-3" onclick="return confirm('bạn có chắc chắn muốn sửa sản phẩm này không ?')">
+        <input type="submit" value="Edit" class="btn btn-secondary mb-3"
+               onclick="return confirm('bạn có chắc chắn muốn sửa sản phẩm này không ?')">
         <input type="reset" class="btn btn-danger mb-3" value="Reset">
     </form>
 </div>
+<script type="text/javascript">
+    function triggerClick(e) {
+        document.querySelector('#idImage').click();
+    }
+
+    function displayImage(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector('#Display').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+</script>

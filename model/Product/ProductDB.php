@@ -12,6 +12,7 @@ class ProductDB
         $this->conn = $db->connect();
     }
 
+
     public function getListProduct($start, $limit)
     {
         $sql = "SELECT * FROM products p 
@@ -54,7 +55,6 @@ class ProductDB
         $description = $product->getDescription();
         $img = $product->getImg();
         $category = $product->getCategory();
-
         $sql = "UPDATE products 
                 SET product_name = '$name', price = '$price', quantity = '$quantity', 
                     product_description = '$description', img = '$img', category = '$category'
@@ -92,9 +92,9 @@ class ProductDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch();
-        return new Product($result['product_name'], $result['price'],
-            $result['quantity'], $result['product_description'],
-            $result['img'], $result['category']);
+        $product = new Product($result['product_name'], $result['price'], $result['quantity'], $result['product_description'], $result['img'], $result['category']);
+        $product->setProductId($result['product_id']);
+        return $product;
     }
 
     public function upload()

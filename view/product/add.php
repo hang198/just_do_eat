@@ -24,11 +24,10 @@ if ($_SESSION['position'] !== 'admin') {
                       style="background: rgb(0,0,0,0.1)"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1" >Phân loại</label>
-            <select class="form-control" name="category">
+            <label for="exampleFormControlSelect1">Phân loại</label>
+            <select class="form-control" name="category" required>
                 <?php foreach ($categories as $category): ?>
-                    <option
-                        value="<?php echo $category->getCategoryId(); ?>"><?php echo $category->getName(); ?></option>
+                    <option value="<?php echo $category->getCategoryId(); ?>"><?php echo $category->getName(); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

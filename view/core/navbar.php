@@ -1,7 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-
         <a class="navbar-brand" href="/just_do_eat">Just Do Eat</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +27,10 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="?page=about" class="nav-link mt-2">About</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link mt-2"><span
-                            class="icon-shopping_cart"></span>[0]</a></li>
                 <?php if ($_SESSION["idUser"]) { ?>
+                    <li class="nav-item"><a href="#" class="nav-link mt-2">About</a></li>
+                    <li class="nav-item cta cta-colored"><a href="index.php?page=cart" class="nav-link mt-2"><span
+                                    class="icon-shopping_cart"></span>[0]</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false"><img style="width:40px;height:40px"
