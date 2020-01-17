@@ -63,13 +63,17 @@ class ProductController
 
     public function getCart()
     {
-        $_SESSION['quantity'] = [];
         $cart = [];
         $this->deleteProductCart();
         foreach ($_SESSION['product_id'] as $id) {
             $product = $this->productDB->getValueProduct($id);
             array_push($cart, $product);
 
+        }
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+            echo "<script>alert('bạn đã đặt hàng thành công')
+            window.location='view/order/index.php';
+            </script>";
         }
         include_once "view/product/cart.php";
     }

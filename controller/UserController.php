@@ -43,10 +43,10 @@ class UserController
                     $_SESSION["idUser"] = $user->getUserId();
                     $_SESSION["Avatar"] = $user->getAvatar();
                     $_SESSION['product_id'] = [];
+                    $_SESSION['quantity'] = [];
                     header("Location: ../../index.php");
                 }elseif ($_POST['username'] !== $user->getUsername() || $_POST['password'] !== $user->getPassword()){
-                    echo "
-                        <script>
+                    echo "<script>
                             alert('bạn đã nhập sai tên đăng nhập hoặc mật khẩu')
                             window.location='index.php?page=login';
                         </script>";

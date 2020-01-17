@@ -7,13 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["quantity"][$i] = $_POST["quantity$i"];
         }
     }
-    var_dump($_SESSION['quantity']);
 }
 
 
 ?>
 <div class="container">
-    <form method="post" action="view/order/index.php">
+    <form method="post">
         <div class="card">
             <div class="col-12">
                 <table class="table table-hover shopping-cart-wrap">

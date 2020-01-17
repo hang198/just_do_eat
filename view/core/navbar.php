@@ -30,7 +30,7 @@
                     <?php if ($_SESSION["idUser"]) { ?>
                 </li>
                 <li class="nav-item cta cta-colored"><a href="index.php?page=cart" class="nav-link mt-2"><span
-                            class="icon-shopping_cart"></span>[0]</a></li>
+                            class="icon-shopping_cart"></span>[<?php echo count($_SESSION['quantity']) ?>]</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"><img style="width:40px;height:40px"
