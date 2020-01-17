@@ -60,7 +60,7 @@
                         </div>
                         <input type="number" class="form-control" name="phone" placeholder="phone number">
                     </div>
-                    <div class="input-group form-group col-12 ml-3" >
+                    <div class="input-group form-group col-12 ml-3">
                         <input type="submit" value="Sign Up" class="btn signin_btn">
                     </div>
                 </form>

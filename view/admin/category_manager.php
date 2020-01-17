@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION['position'] !== 'admin') {
+    header("location: ../../index.php ");
+}
+
+?>
 <div class="row col-10 ml-2 float-left text-light" style="background: rgb(0,0,0,0.5)">
     <table class="table table-striped text-light">
         <tr>

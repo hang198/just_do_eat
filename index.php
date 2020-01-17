@@ -1,5 +1,7 @@
 <?php
 
+use Category\CategoryDB;
+
 session_start();
 
 include_once "model/database/DBConnect.php";
@@ -8,10 +10,13 @@ include_once "model/Product/ProductDB.php";
 include_once "controller/ProductController.php";
 include_once "model/User/User.php";
 include_once "model/User/UserDB.php";
+include_once "model/Category/Category.php";
+include_once "model/Category/CategoryDB.php";
 include_once "controller/UserController.php";
 
 $productController = new ProductController();
 $userController = new UserController();
+$categories = (new CategoryDB)->getCategoriesList();
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 ?>

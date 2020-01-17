@@ -64,22 +64,22 @@ $page = isset($_GET['page']) ? $_GET['page'] : null;
 <body class="goto-here">
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : null;
-switch ($page){
-      case "signup":
-            $userController->addUser();
-      break;
-      case "logout":
-            $userController->logout();
-      break;
-      case "login":
-            $userController->login();
-      break;
-      case "editInfo":
-            $userController->editUser();
-      break;
-      case "editPass":
-            $userController->editPass();
-      break;
+switch ($page) {
+    case "signup":
+        $userController->addUser();
+        break;
+    case "logout":
+        $userController->logout();
+        break;
+    case "login":
+        $userController->login();
+        break;
+    case "editInfo":
+        $userController->editUser();
+        break;
+    case "editPass":
+        $userController->editPass();
+        break;
     default:
         $userController->infoUser();
         break;

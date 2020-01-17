@@ -25,6 +25,8 @@ class ProductController
             if ($products == null) {
                 echo "không có sản phẩm";
             }
+        } elseif (isset($_GET['category_id'])) {
+            $products = $this->productDB->searchProductByCategoryId($_GET['category_id']);
         } else {
             $products = $this->productDB->getListProduct($start, $limit);
         }

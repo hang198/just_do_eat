@@ -1,8 +1,8 @@
 <?php
-session_start();
-if ($_SESSION['position'] !== 'admin') {
-    header("location: ../../index.php ");
-}
+//session_start();
+//if ($_SESSION['position'] !== 'admin') {
+//    header("location: ../../index.php ");
+//}
 include_once "../../controller/ProductController.php";
 include_once "../../controller/AdminController.php";
 include_once "../../controller/UserController.php";
@@ -72,6 +72,14 @@ $adminController = new AdminController();
             break;
         case 'deleteUser':
             $adminController->deleteUser();
+            break;
+
+        //order
+        case 'orderList':
+            $adminController->getListOrder();
+            break;
+        case 'deleteOrder':
+            $adminController->deleteOrder();
             break;
         default:
             $adminController->getListProduct();

@@ -16,11 +16,10 @@
             <div class="pb-md-5">
                 <p>Case Study Module 2 of Number One</p>
                 <p>
-                    hahahhahahahahahahahahahahahahahahahhaahhahahaahhahahahhaha
-                    hahahahahahahahahahahahahahhaahhahahaahhahahahhahahahahahah
-                    ahahahahahahahahahhaahhahahaahhahahahhahahahahahahahahahaha
-                    hahahahahhaahhahahaahhahahahhahahahahahahahahahahahahahahah
-                    haahhahahaahhahahahhahahahahahahahahahahahahahahahhaahhahah
+                    Chào mừng mọi người đến với case study kết thúc module 2 của nhóm Number One.
+                    Do lần đầu làm việc nhóm nên trong quá trình làm còn nhiều sai xót xin mọi người thông cảm.
+                    Nhóm chúng tôi sẽ cố gắng hoàn thiện sản phẩm vào lần sau.
+                    XIN CẢM ƠN!
                 </p>
                 <p><a href="index.php" class="btn btn-primary">Shop now</a></p>
             </div>

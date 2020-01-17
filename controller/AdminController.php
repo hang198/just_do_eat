@@ -21,13 +21,11 @@ class AdminController
         $this->customerDB = new CustomerDB();
         $this->categoryDB = new CategoryDB();
         $this->orderDB = new OrderDB();
-
     }
 
     // admin quản lí các sản phẩm
     public function addProduct()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $categories = $this->categoryDB->getCategoriesList();
             include_once "../product/add.php";
@@ -46,7 +44,7 @@ class AdminController
             include_once "../product/edit.php";
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($_FILES['img']['name']) {
-                unlink("../../images/" .$product->getImg());
+                unlink("../../images/" . $product->getImg());
                 $image = $this->productDB->upload();
             } else {
                 $image = $product->getImg();
@@ -134,6 +132,20 @@ class AdminController
         $user_id = $_GET['user_id'];
         $this->userDB->deleteUser($user_id);
         header("location: ?page=userList");
+    }
+
+    //admin quản lí đơn hàng
+    public function getListOrder()
+    {
+        $orders = $this->orderDB->getListOrder();
+        include_once "../order/orderList.php";
+    }
+
+    public function deleteOrder()
+    {
+        $order_id = $_GET['order_id'];
+        $this->orderDB->deleteOrder($order_id);
+        header("location: ?page=orderList");
     }
 
 }

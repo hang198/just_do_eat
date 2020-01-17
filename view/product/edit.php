@@ -27,7 +27,7 @@ if ($_SESSION['position'] !== 'admin') {
             <label for="exampleFormControlSelect1">Phân loại</label>
             <select class="form-control" name="category" required>
                 <?php foreach ($categories as $category): ?>
-                    <option value="<?php echo $category->getCategoryId(); ?>" <?php if ($product->getProductId() == $category->getCategoryId()) echo "selected" ?>><?php echo $category->getName(); ?></option>
+                    <option value="<?php echo $category->getCategoryId(); ?>" <?php if ($product->getCategory() == $category->getCategoryId()) echo "selected" ?>><?php echo $category->getName(); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

@@ -64,7 +64,6 @@ class UserController
         $user_id = $_GET['id'];
         $userById = $this->userDB->getUserById($user_id);
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
             include_once "edit_user.php";
         } else {
             if ($_FILES['img']['name']) {

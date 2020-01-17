@@ -12,13 +12,15 @@ class Order
     private $customer;
     private $status;
     private $createDate;
+    private $totalPrice;
 
-    public function __construct($product, $quantity, $customer, $status)
+    public function __construct($product, $quantity, $customer, $status, $total_price)
     {
         $this->product = $product;
         $this->quantity = $quantity;
         $this->customer = $customer;
         $this->status = $status;
+        $this->totalPrice = $total_price;
     }
 
     /**
@@ -70,6 +72,14 @@ class Order
     }
 
     /**
+     * @return mixed
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
      * @param mixed $oder_id
      */
     public function setOderId($oder_id)
@@ -117,4 +127,11 @@ class Order
         $this->createDate = $createDate;
     }
 
+    /**
+     * @param mixed $totalPrice
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+    }
 }

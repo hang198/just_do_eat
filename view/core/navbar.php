@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 
@@ -18,13 +19,17 @@
                     <a class="nav-link dropdown-toggle mt-2" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Categories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Đồ ăn</a>
-                        <a class="dropdown-item" href="wishlist.html">Đồ uống</a>
+                        <?php foreach ($categories as $category): ?>
+                            <a class="dropdown-item"
+                               href="?page=getCategory&category_id=<?php echo $category->getCategoryId(); ?>">
+                                <?php echo $category->getName(); ?>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </li>
                 <li class="nav-item"><a href="?page=about" class="nav-link mt-2">About</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link mt-2"><span
-                                class="icon-shopping_cart"></span>[0]</a></li>
+                            class="icon-shopping_cart"></span>[0]</a></li>
                 <?php if ($_SESSION["idUser"]) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
