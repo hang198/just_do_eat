@@ -1,7 +1,5 @@
 <?php
 
-use DBConnect\DBConnect;
-
 class ProductDB
 {
     private $conn;
@@ -121,9 +119,10 @@ class ProductDB
         return $this->createProductFromData($result);
     }
 
-    public function sortBy($sortBy)
+    public function sortBy($sortBy, $start, $limit)
     {
-        $sql = "SELECT * FROM products ORDER BY price $sortBy";
+        $sql = "SELECT * FROM products ORDER BY price $sortBy
+        LIMIT $start, $limit";
         $stmt = $this->conn->query($sql);
         $result = $stmt->fetchAll();
         return $this->createProductFromData($result);

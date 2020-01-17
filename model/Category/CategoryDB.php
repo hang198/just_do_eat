@@ -1,11 +1,6 @@
 <?php
 
 
-namespace Category;
-
-
-use DBConnect\DBConnect;
-
 class CategoryDB
 {
     private $conn;

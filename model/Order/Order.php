@@ -1,66 +1,30 @@
 <?php
 
 
-namespace Order;
-
-
 class Order
 {
-    private $oder_id;
-    private $product;
-    private $quantity;
-    private $customer;
-    private $status;
+    private $orderId;
+    private $productId;
+    private $orderAmount;
     private $createDate;
     private $totalPrice;
+    private $price;
 
-    public function __construct($product, $quantity, $customer, $status, $total_price)
+
+    public function __construct($productId, $orderAmount, $createDate, $totalPrice)
     {
-        $this->product = $product;
-        $this->quantity = $quantity;
-        $this->customer = $customer;
-        $this->status = $status;
-        $this->totalPrice = $total_price;
+        $this->productId = $productId;
+        $this->orderAmount = $orderAmount;
+        $this->createDate = $createDate;
+        $this->totalPrice = $totalPrice;
     }
 
     /**
      * @return mixed
      */
-    public function getOderId()
+    public function getTotalPrice()
     {
-        return $this->oder_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
+        return $this->totalPrice;
     }
 
     /**
@@ -74,49 +38,49 @@ class Order
     /**
      * @return mixed
      */
-    public function getTotalPrice()
+    public function getPrice()
     {
-        return $this->totalPrice;
+        return $this->price;
     }
 
     /**
-     * @param mixed $oder_id
+     * @return mixed
      */
-    public function setOderId($oder_id)
+    public function getProductId()
     {
-        $this->oder_id = $oder_id;
+        return $this->productId;
     }
 
     /**
-     * @param mixed $product
+     * @return mixed
      */
-    public function setProduct($product)
+    public function getOrderAmount()
     {
-        $this->product = $product;
+        return $this->orderAmount;
     }
 
     /**
-     * @param mixed $quantity
+     * @return mixed
      */
-    public function setQuantity($quantity)
+    public function getOrderId()
     {
-        $this->quantity = $quantity;
+        return $this->orderId;
     }
 
     /**
-     * @param mixed $customer
+     * @param mixed $totalPrice
      */
-    public function setCustomer($customer)
+    public function setTotalPrice($totalPrice)
     {
-        $this->customer = $customer;
+        $this->totalPrice = $totalPrice;
     }
 
     /**
-     * @param mixed $status
+     * @param mixed $price
      */
-    public function setStatus($status)
+    public function setPrice($price)
     {
-        $this->status = $status;
+        $this->price = $price;
     }
 
     /**
@@ -128,10 +92,27 @@ class Order
     }
 
     /**
-     * @param mixed $totalPrice
+     * @param mixed $orderAmount
      */
-    public function setTotalPrice($totalPrice)
+    public function setOrderAmount($orderAmount)
     {
-        $this->totalPrice = $totalPrice;
+        $this->orderAmount = $orderAmount;
     }
+
+    /**
+     * @param mixed $orderId
+     */
+    public function setOrderId($orderId)
+    {
+        $this->orderId = $orderId;
+    }
+
+    /**
+     * @param mixed $productId
+     */
+    public function setProductId($productId)
+    {
+        $this->productId = $productId;
+    }
+
 }

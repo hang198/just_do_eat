@@ -5,7 +5,7 @@
             <div class="card-header">
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;Thông tin đối tượng</h3>
                 <div class="d-flex justify-content-end social_icon">
-                    <span><a href="/just_do_eat/"><i class="fa fa-home"></i></a></span>
+                    <span><a href="/just_do_eat"><i class="fa fa-home"></i></a></span>
                 </div>
             </div>
 

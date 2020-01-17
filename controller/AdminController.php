@@ -1,11 +1,5 @@
 <?php
 
-use Category\Category;
-use Category\CategoryDB;
-use Customer\CustomerDB;
-use Order\OrderDB;
-use User\UserDB;
-
 class AdminController
 {
     private $userDB;

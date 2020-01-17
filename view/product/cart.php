@@ -1,16 +1,19 @@
 <?php
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    foreach ($_SESSION["product_id"] as $key => $value) {
-        if ($_SESSION["quantity"][$key] != $_POST["quantity$key"]) {
-            $_SESSION["quantity"][$key] = $_POST["quantity$key"];
+    for($i = 0; $i< count($_SESSION["product_id"]); $i++) {
+        if ($_SESSION["quantity"][$i] != $_POST["quantity$i"]) {
+            $_SESSION["quantity"][$i] = $_POST["quantity$i"];
         }
     }
+    var_dump($_SESSION['quantity']);
 }
+
 
 ?>
 <div class="container">
-    <form method="post">
+    <form method="post" action="view/order/index.php">
         <div class="card">
             <div class="col-12">
                 <table class="table table-hover shopping-cart-wrap">
@@ -49,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </tr>
                     <?php endforeach; ?>
                 </table>
-                <input type="submit" value="Mua Hàng" href="?page=getOrder" class="btn btn-outline-success">
+                <input type="submit" value="Mua Hàng" class="btn btn-outline-success">
             </div>
         </div>
     </form>

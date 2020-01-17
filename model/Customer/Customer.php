@@ -1,8 +1,6 @@
 <?php
 
 
-namespace Customer;
-
 
 class Customer
 {

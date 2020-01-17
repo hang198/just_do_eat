@@ -4,7 +4,7 @@ session_start();
 
 class ProductController
 {
-    public $productDB;
+    private $productDB;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class ProductController
         $this->addCart();
         if (isset($_POST['sortBy'])) {
             $sortBy = $_POST['sortBy'];
-            $products = $this->productDB->sortBy($sortBy);
+            $products = $this->productDB->sortBy($sortBy, $start, $limit);
         } elseif (isset($_GET['keyword'])) {
             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : null;
             $products = $this->productDB->searchProduct($keyword);
@@ -46,15 +46,8 @@ class ProductController
                 echo "<script>alert('sản phẩm này đã có trong giỏ hàng')</script>";
             } else {
                 array_push($_SESSION['product_id'], $product_id);
-//            echo "<script>alert('bạn đã thêm sản phẩm này vào trong giỏ hàng')</script>";
             }
         }
-    }
-
-    public function getOrder()
-    {
-        array_push($_SESSION['quantity'], $_POST['quantity']);
-        var_dump($_SESSION['quantity']);
     }
 
     public function deleteProductCart()
@@ -70,11 +63,13 @@ class ProductController
 
     public function getCart()
     {
+        $_SESSION['quantity'] = [];
         $cart = [];
         $this->deleteProductCart();
         foreach ($_SESSION['product_id'] as $id) {
             $product = $this->productDB->getValueProduct($id);
             array_push($cart, $product);
+
         }
         include_once "view/product/cart.php";
     }
@@ -85,4 +80,5 @@ class ProductController
         $product = $this->productDB->getValueProduct($id);
         include_once "view/product/productDetail.php";
     }
+
 }

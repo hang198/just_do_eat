@@ -1,9 +1,6 @@
 <?php
 
 
-namespace Category;
-
-
 class Category
 {
     private $category_id;

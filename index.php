@@ -1,10 +1,11 @@
 <?php
 
-use Category\CategoryDB;
-
 session_start();
 
 include_once "model/database/DBConnect.php";
+include_once "model/Order/Order.php";
+include_once "model/Order/OrderDB.php";
+include_once "controller/OrderController.php";
 include_once "model/Product/Product.php";
 include_once "model/Product/ProductDB.php";
 include_once "controller/ProductController.php";
@@ -17,6 +18,7 @@ include_once "controller/UserController.php";
 $productController = new ProductController();
 $userController = new UserController();
 $categories = (new CategoryDB)->getCategoriesList();
+$orderController = new OrderController();
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 ?>
@@ -93,9 +95,6 @@ switch ($page) {
         break;
     case 'cartDelete':
         $productController->deleteProductCart();
-        break;
-    case 'orderList':
-        $productController->getOrder();
         break;
     default:
         $productController->index();

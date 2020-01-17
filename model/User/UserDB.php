@@ -1,11 +1,5 @@
 <?php
 
-
-namespace User;
-
-
-use DBConnect\DBConnect;
-
 class UserDB
 {
     private $conn;

@@ -1,10 +1,6 @@
 <?php
 
 
-namespace Customer;
-
-
-use DBConnect\DBConnect;
 
 class CustomerDB
 {
